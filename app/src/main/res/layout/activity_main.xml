@@ -6,13 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnAddLeaguesToDb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="56dp"
+        android:text="Add Leagues to DB"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchForClubsByLeague"
+        app:layout_constraintStart_toStartOf="@+id/btnSearchForClubsByLeague" />
+
+    <Button
+        android:id="@+id/btnSearchForClubsByLeague"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:text="Search for Clubs By League"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnSearchForClubs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="73dp"
+        android:text="Search for Clubs"
+        app:layout_constraintStart_toStartOf="@+id/btnSearchForClubsByLeague"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearchForClubsByLeague" />
 </androidx.constraintlayout.widget.ConstraintLayout>
