@@ -1,4 +1,4 @@
-package com.example.sportsapp;
+package com.example.sportsapp.Database;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

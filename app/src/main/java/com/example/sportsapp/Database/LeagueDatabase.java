@@ -1,4 +1,4 @@
-package com.example.sportsapp;
+package com.example.sportsapp.Database;
 
 import androidx.room.Database;
 import androidx.room.Room;

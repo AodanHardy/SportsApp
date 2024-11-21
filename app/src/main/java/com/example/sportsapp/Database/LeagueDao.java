@@ -1,8 +1,10 @@
-package com.example.sportsapp;
+package com.example.sportsapp.Database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.sportsapp.Database.League;
 
 import java.util.List;
 
