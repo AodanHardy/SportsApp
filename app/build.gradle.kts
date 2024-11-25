@@ -38,7 +38,8 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
 
-  
+    implementation ("com.squareup.okhttp3:okhttp:4.11.0")
+
 
     // If this project only uses Java source, use the Java annotationProcessor
     // No additional plugins are necessary

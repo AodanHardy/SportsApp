@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.sportsapp.API.APIAccessor;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     Button addLeagueToDb, searchForClubByLeague,searchForClub;
@@ -20,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         addLeagueToDb = findViewById(R.id.btnAddLeaguesToDb);
         searchForClubByLeague = findViewById(R.id.btnSearchForClubsByLeague);
         searchForClub = findViewById(R.id.btnSearchForClubs);
+
+
+
+        // test
+
+
+        // Fetch leagues in Scotland
+        String country = "Scotland";
 
 
         addLeagueToDb.setOnClickListener(new View.OnClickListener() {
