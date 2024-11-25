@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 new Thread(()->{
                     populateLeagues();
-
                 }).start();
             }
         });
@@ -48,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SearchClubByLeague.class);
 
                 startActivity(intent);
-
-
             }
         });
 
