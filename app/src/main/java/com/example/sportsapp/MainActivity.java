@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.sportsapp.Database.AppDatabase;
 import com.example.sportsapp.Database.League;
@@ -32,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         addLeagueToDb = findViewById(R.id.btnAddLeaguesToDb);
         searchForClubByLeague = findViewById(R.id.btnSearchForClubsByLeague);
         searchForClub = findViewById(R.id.btnSearchForClubs);
-
-
 
         addLeagueToDb.setOnClickListener(new View.OnClickListener() {
             @Override
