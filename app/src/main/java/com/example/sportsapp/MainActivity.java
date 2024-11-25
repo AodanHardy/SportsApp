@@ -27,19 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // test
-
-
-        // Fetch leagues in Scotland
-        String country = "Scotland";
-
-
         addLeagueToDb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddLeaguesToDb.class);
 
-                startActivity(intent);
 
 
             }
