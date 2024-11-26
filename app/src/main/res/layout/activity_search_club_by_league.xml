@@ -11,9 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
+        android:layout_marginBottom="155dp"
         android:ems="10"
         android:hint="Club"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,4 +39,14 @@
         android:text="Save Clubs to DB"
         app:layout_constraintEnd_toEndOf="@+id/editTextClubSearch"
         app:layout_constraintTop_toBottomOf="@+id/btnRetrieveClubs" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextClubSearch" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

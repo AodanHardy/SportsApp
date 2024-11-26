@@ -1,20 +1,19 @@
 package com.example.sportsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import androidx.fragment.app.FragmentTransaction;
 import com.example.sportsapp.API.SportsApiClient;
 import com.example.sportsapp.Mappers.ClubMapper;
 import com.example.sportsapp.Models.Club;
-
 import java.util.List;
 
 public class SearchClubByLeague extends AppCompatActivity {
-    Button btnRetrieveClubs,btnSaveClubsToDB;
+
+    Button btnRetrieveClubs, btnSaveClubsToDB;
     EditText clubSearch;
 
     @Override
@@ -31,25 +30,19 @@ public class SearchClubByLeague extends AppCompatActivity {
         btnRetrieveClubs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // get text
                 String searchText = clubSearch.getText().toString();
 
-
-                // call API with text
                 client.getAllTeamsByLeague(searchText, new SportsApiClient.ApiCallback() {
                     @Override
                     public void onSuccess(String result) {
-
                         List<Club> clubs = ClubMapper.mapJsonToClubs(result);
 
-                        // if clubs is 0, then invalid search
-
-                        System.out.println();
-
-                        for (Club club : clubs) {
-                            System.out.println();
-                            // put clubs on screen
+                        // If clubs are found, pass them to the fragment
+                        if (clubs != null && !clubs.isEmpty()) {
+                            ClubFragment fragment = ClubFragment.newInstance(clubs);
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.fragmentContainer, fragment);
+                            transaction.commit();
                         }
                     }
 
@@ -58,7 +51,6 @@ public class SearchClubByLeague extends AppCompatActivity {
                         System.err.println("Failed to fetch data: " + e.getMessage());
                     }
                 });
-
             }
         });
     }
