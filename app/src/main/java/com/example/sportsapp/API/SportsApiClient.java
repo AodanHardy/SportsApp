@@ -66,7 +66,7 @@ public class SportsApiClient {
         });
     }
 
-    // Send GET requests
+    // Send the requests
     private String sendGetRequest(String urlString) throws Exception {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
