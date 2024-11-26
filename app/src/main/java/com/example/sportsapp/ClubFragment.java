@@ -20,26 +20,24 @@ public class ClubFragment extends Fragment {
     public static ClubFragment newInstance(List<Club> clubs) {
         ClubFragment fragment = new ClubFragment();
         Bundle args = new Bundle();
-        args.putSerializable("clubList", (java.io.Serializable) clubs); // Pass the list as a Serializable object
+        args.putSerializable("clubList", (java.io.Serializable) clubs);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_club_list, container, false);
 
-        // Set up the RecyclerView
+
         recyclerView = view.findViewById(R.id.recyclerViewClubs);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Get the list of clubs from the arguments
         if (getArguments() != null) {
             clubList = (List<Club>) getArguments().getSerializable("clubList");
         }
 
-        // Set up the adapter with the club list
         if (clubList != null) {
             adapter = new MyClubRecyclerViewAdapter(clubList);
             recyclerView.setAdapter(adapter);

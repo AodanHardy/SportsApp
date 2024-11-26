@@ -9,21 +9,28 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.sportsapp.API.SportsApiClient;
 import com.example.sportsapp.Mappers.ClubMapper;
 import com.example.sportsapp.Models.Club;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchClubByLeague extends AppCompatActivity {
 
     Button btnRetrieveClubs, btnSaveClubsToDB;
     EditText clubSearch;
+    List<Club> clubs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_club_by_league);
 
+        clubs = new ArrayList<>();
+
         btnRetrieveClubs = findViewById(R.id.btnRetrieveClubs);
         btnSaveClubsToDB = findViewById(R.id.btnSaveClubsToDB);
         clubSearch = findViewById(R.id.editTextClubSearch);
+
+
 
         SportsApiClient client = new SportsApiClient();
 
@@ -35,9 +42,10 @@ public class SearchClubByLeague extends AppCompatActivity {
                 client.getAllTeamsByLeague(searchText, new SportsApiClient.ApiCallback() {
                     @Override
                     public void onSuccess(String result) {
-                        List<Club> clubs = ClubMapper.mapJsonToClubs(result);
 
-                        // If clubs are found, pass them to the fragment
+                        clubs.addAll(ClubMapper.mapJsonToClubs(result));
+
+                        // If there are clubs, pass them to the fragment
                         if (clubs != null && !clubs.isEmpty()) {
                             ClubFragment fragment = ClubFragment.newInstance(clubs);
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -51,6 +59,18 @@ public class SearchClubByLeague extends AppCompatActivity {
                         System.err.println("Failed to fetch data: " + e.getMessage());
                     }
                 });
+            }
+        });
+
+        btnSaveClubsToDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // check if clubs has anything
+
+                if (!clubs.isEmpty()) {
+                    // if ture save clubs to database
+
+                }
             }
         });
     }
