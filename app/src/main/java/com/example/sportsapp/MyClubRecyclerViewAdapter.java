@@ -28,7 +28,8 @@ public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mNameView.setText(mValues.get(position).getName());
-        // Load the logo image using Glide
+
+        // load the image using glide libary
         Glide.with(holder.mLogoView.getContext())
                 .load(mValues.get(position).getLogoUrl())
                 .into(holder.mLogoView);
