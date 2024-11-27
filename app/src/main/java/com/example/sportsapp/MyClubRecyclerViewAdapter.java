@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.example.sportsapp.Models.Club;
+import com.example.sportsapp.Database.Club;
 import java.util.List;
 
 public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecyclerViewAdapter.ViewHolder> {

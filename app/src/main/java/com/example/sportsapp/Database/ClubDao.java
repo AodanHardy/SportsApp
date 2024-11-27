@@ -2,17 +2,18 @@ package com.example.sportsapp.Database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import com.example.sportsapp.Models.Club;
+import com.example.sportsapp.Database.Club;
 import java.util.List;
 
 @Dao
 public interface ClubDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertClub(Club club);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertClubs(List<Club> clubs);
 
     @Query("SELECT * FROM clubs")

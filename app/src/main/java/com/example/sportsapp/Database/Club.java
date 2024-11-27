@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "clubs")
 public class Club {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private int id;
 
     private String name;
@@ -23,9 +23,10 @@ public class Club {
     private String logoUrl;
 
     // Constructor
-    public Club(String name, String shortName, String alternateName, int formedYear,
+    public Club(int id, String name, String shortName, String alternateName, int formedYear,
                 String league, String leagueId, String stadium, String keywords,
                 String stadiumLocation, int stadiumCapacity, String website, String logoUrl) {
+        this.id = id;
         this.name = name;
         this.shortName = shortName;
         this.alternateName = alternateName;

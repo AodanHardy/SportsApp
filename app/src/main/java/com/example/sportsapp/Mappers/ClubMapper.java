@@ -1,7 +1,7 @@
 package com.example.sportsapp.Mappers;
 
 
-import com.example.sportsapp.Models.Club;
+import com.example.sportsapp.Database.Club;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ public class ClubMapper {
             for (int i = 0; i < teamsArray.length(); i++) {
                 JSONObject teamJson = teamsArray.getJSONObject(i);
 
-                String id = teamJson.optString("idTeam", null);
+                int id = Integer.parseInt(teamJson.optString("idTeam", null));
                 String name = teamJson.optString("strTeam", null);
                 String shortName = teamJson.optString("strTeamShort", null);
                 String alternateName = teamJson.optString("strTeamAlternate", null);

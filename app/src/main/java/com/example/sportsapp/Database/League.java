@@ -15,7 +15,7 @@ public class League {
     private String strLeagueAlternate;
 
     // Constructors, Getters, and Setters
-    public League(String idLeague, String strLeague, String strSport, String strLeagueAlternate) {
+    public League(@NonNull String idLeague, String strLeague, String strSport, String strLeagueAlternate) {
         this.idLeague = idLeague;
         this.strLeague = strLeague;
         this.strSport = strSport;
