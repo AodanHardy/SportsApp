@@ -26,12 +26,22 @@ public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mNameView.setText(mValues.get(position).getName());
+        Club club = mValues.get(position);
+        holder.mItem = club;
 
-        // load the image using glide libary
+        holder.mNameView.setText(club.getName());
+        holder.mShortNameView.setText("Short Name: " + club.getShortName());
+        holder.mAlternateNameView.setText("Alternate Name: " + club.getAlternateName());
+        holder.mFormedYearView.setText("Formed Year: " + club.getFormedYear());
+        holder.mLeagueView.setText("League: " + club.getLeague());
+        holder.mStadiumView.setText("Stadium: " + club.getStadium());
+        holder.mStadiumLocationView.setText("Location: " + club.getStadiumLocation());
+        holder.mStadiumCapacityView.setText("Capacity: " + club.getStadiumCapacity());
+        holder.mWebsiteView.setText("Website: " + club.getWebsite());
+
+        // Load the logo using Glide
         Glide.with(holder.mLogoView.getContext())
-                .load(mValues.get(position).getLogoUrl())
+                .load(club.getLogoUrl())
                 .into(holder.mLogoView);
     }
 
@@ -42,12 +52,28 @@ public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mNameView;
+        public final TextView mShortNameView;
+        public final TextView mAlternateNameView;
+        public final TextView mFormedYearView;
+        public final TextView mLeagueView;
+        public final TextView mStadiumView;
+        public final TextView mStadiumLocationView;
+        public final TextView mStadiumCapacityView;
+        public final TextView mWebsiteView;
         public final ImageView mLogoView;
         public Club mItem;
 
         public ViewHolder(View view) {
             super(view);
             mNameView = view.findViewById(R.id.clubName);
+            mShortNameView = view.findViewById(R.id.clubShortName);
+            mAlternateNameView = view.findViewById(R.id.clubAlternateName);
+            mFormedYearView = view.findViewById(R.id.clubFormedYear);
+            mLeagueView = view.findViewById(R.id.clubLeague);
+            mStadiumView = view.findViewById(R.id.clubStadium);
+            mStadiumLocationView = view.findViewById(R.id.clubStadiumLocation);
+            mStadiumCapacityView = view.findViewById(R.id.clubStadiumCapacity);
+            mWebsiteView = view.findViewById(R.id.clubWebsite);
             mLogoView = view.findViewById(R.id.clubLogo);
         }
     }

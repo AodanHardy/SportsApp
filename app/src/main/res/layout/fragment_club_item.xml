@@ -3,23 +3,90 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/clubLogo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:contentDescription="Club Logo"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/clubName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Club Name"
+        android:textStyle="bold"
         android:textSize="18sp"
-        android:gravity="center_vertical"
-        android:maxLines="1" />
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/clubShortName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Short Name"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubAlternateName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alternate Name"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubFormedYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Formed Year"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubLeague"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="League"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubStadium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stadium"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubStadiumLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stadium Location"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubStadiumCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stadium Capacity"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/clubWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Website"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
 </LinearLayout>
