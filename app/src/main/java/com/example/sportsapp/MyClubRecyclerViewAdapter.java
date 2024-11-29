@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Club> mValues;
+    private List<Club> mValues;
 
     public MyClubRecyclerViewAdapter(List<Club> items) {
         mValues = items;
@@ -76,5 +76,10 @@ public class MyClubRecyclerViewAdapter extends RecyclerView.Adapter<MyClubRecycl
             mWebsiteView = view.findViewById(R.id.clubWebsite);
             mLogoView = view.findViewById(R.id.clubLogo);
         }
+    }
+
+    public void updateData(List<Club> newClubs) {
+        mValues = newClubs; // Replace the existing data
+        notifyDataSetChanged(); // Notify the RecyclerView to rebind the views
     }
 }

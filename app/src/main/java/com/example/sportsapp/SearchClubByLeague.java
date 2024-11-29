@@ -58,7 +58,7 @@ public class SearchClubByLeague extends AppCompatActivity {
 
                         clubs.addAll(ClubMapper.mapJsonToClubs(result));
 
-                        // If there are clubs, pass them to the fragment
+                        // If there are clubs pass them to the fragment
                         if (clubs != null && !clubs.isEmpty()) {
                             ClubFragment fragment = ClubFragment.newInstance(clubs);
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
