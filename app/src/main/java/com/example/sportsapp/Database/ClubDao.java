@@ -25,4 +25,9 @@ public interface ClubDao {
     // Example query to get clubs by league
     @Query("SELECT * FROM clubs WHERE league = :leagueName")
     List<Club> getClubsByLeague(String leagueName);
+
+
+    @Query("SELECT * FROM clubs WHERE name LIKE '%' || :query || '%' OR league LIKE '%' || :query || '%'")
+    List<Club> searchClubs(String query);
+
 }

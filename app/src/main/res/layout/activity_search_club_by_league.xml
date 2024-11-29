@@ -7,7 +7,7 @@
     tools:context=".SearchClubByLeague">
 
     <EditText
-        android:id="@+id/editTextClubSearch"
+        android:id="@+id/editTextLeagueSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
@@ -28,7 +28,7 @@
         android:layout_marginTop="28dp"
         android:text="Retrieve Clubs"
         app:layout_constraintStart_toStartOf="@+id/btnSaveClubsToDB"
-        app:layout_constraintTop_toBottomOf="@+id/editTextClubSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLeagueSearch" />
 
     <Button
         android:id="@+id/btnSaveClubsToDB"
@@ -37,7 +37,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="26dp"
         android:text="Save Clubs to DB"
-        app:layout_constraintEnd_toEndOf="@+id/editTextClubSearch"
+        app:layout_constraintEnd_toEndOf="@+id/editTextLeagueSearch"
         app:layout_constraintTop_toBottomOf="@+id/btnRetrieveClubs" />
 
     <FrameLayout
@@ -47,6 +47,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextClubSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLeagueSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,7 @@ public class SearchClubByLeague extends AppCompatActivity {
 
         btnRetrieveClubs = findViewById(R.id.btnRetrieveClubs);
         btnSaveClubsToDB = findViewById(R.id.btnSaveClubsToDB);
-        clubSearch = findViewById(R.id.editTextClubSearch);
+        clubSearch = findViewById(R.id.editTextLeagueSearch);
 
 
 
