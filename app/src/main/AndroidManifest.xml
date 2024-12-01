@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SportsApp"
         tools:targetApi="31">
         <activity
+            android:name=".ClubJerseySearch"
+            android:exported="false" />
+        <activity
             android:name=".SearchForClubs"
             android:exported="false" />
         <activity

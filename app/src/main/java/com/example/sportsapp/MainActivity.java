@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button addLeagueToDb, searchForClubByLeague,searchForClub;
+    Button addLeagueToDbBtn, searchForClubByLeagueBtn, searchForClubBtn, jerseySearchBtn;
     private AppDatabase db;
 
     @Override
@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "leagues_db").build();
 
-        addLeagueToDb = findViewById(R.id.btnAddLeaguesToDb);
-        searchForClubByLeague = findViewById(R.id.btnSearchForClubsByLeague);
-        searchForClub = findViewById(R.id.btnSearchForClubs);
+        addLeagueToDbBtn = findViewById(R.id.btnAddLeaguesToDb);
+        searchForClubByLeagueBtn = findViewById(R.id.btnSearchForClubsByLeague);
+        searchForClubBtn = findViewById(R.id.btnSearchForClubs);
+        jerseySearchBtn = findViewById(R.id.btnSearchClubJerseys);
 
-        addLeagueToDb.setOnClickListener(new View.OnClickListener() {
+        addLeagueToDbBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new Thread(()->{
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        searchForClubByLeague.setOnClickListener(new View.OnClickListener() {
+        searchForClubByLeagueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SearchClubByLeague.class);
@@ -51,10 +52,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        searchForClub.setOnClickListener(new View.OnClickListener() {
+        searchForClubBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SearchForClubs.class);
+                startActivity(intent);
+            }
+        });
+
+
+        jerseySearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ClubJerseySearch.class);
                 startActivity(intent);
             }
         });

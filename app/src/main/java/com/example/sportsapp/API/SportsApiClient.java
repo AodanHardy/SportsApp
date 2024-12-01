@@ -1,11 +1,16 @@
 package com.example.sportsapp.API;
 
 
+import com.example.sportsapp.Mappers.ClubMapper;
+import com.example.sportsapp.Models.ClubJersey;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -19,7 +24,7 @@ public class SportsApiClient {
     }
 
     // Callback interface for async responses
-    public interface ApiCallback {
+    public interface ApiCallback<T> {
         void onSuccess(String result);
         void onError(Exception e);
     }
@@ -66,6 +71,21 @@ public class SportsApiClient {
         });
     }
 
+    public void getJerseysForClub(String clubId, ApiCallback callback) {
+        executorService.execute(() -> {
+            try {
+                String endpoint = "lookupequipment.php?id=";
+                String url = SPORTS_API_URL + endpoint + clubId;
+                String response = sendGetRequest(url);
+                callback.onSuccess(response);
+            } catch (Exception e) {
+                callback.onError(e);
+            }
+        });
+    }
+
+
+
     // Send the requests
     private String sendGetRequest(String urlString) throws Exception {
         URL url = new URL(urlString);
@@ -88,6 +108,9 @@ public class SportsApiClient {
             throw new Exception("Failed to fetch data: HTTP error code " + responseCode);
         }
     }
+
+
+
 
     // Shutdown executor service
     public void shutdown() {

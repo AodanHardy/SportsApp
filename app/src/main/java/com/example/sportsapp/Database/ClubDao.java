@@ -28,9 +28,9 @@ public interface ClubDao {
 
 
 
-    @Query("SELECT * FROM clubs WHERE name LIKE '%' || :searchText || '%' OR league LIKE '%' " +
-            "|| :searchText || '%' OR shortName LIKE '%' || :searchText " +
-            "|| '%' OR alternateName LIKE '%' || :searchText || '%'")
+    @Query("SELECT * FROM clubs WHERE name LIKE '%' || :searchText || '%' or league LIKE '%' " +
+            "|| :searchText || '%' or shortName LIKE '%' || :searchText " +
+            "|| '%' or alternateName LIKE '%' || :searchText || '%'")
     List<Club> searchClubs(String searchText);
 
 }
