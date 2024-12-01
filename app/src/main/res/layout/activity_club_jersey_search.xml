@@ -11,9 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="111dp"
+        android:layout_marginBottom="106dp"
         android:ems="10"
         android:hint="Club Name"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/clubJerseyRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,4 +29,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextJerseySearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/clubJerseyRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextJerseySearch" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

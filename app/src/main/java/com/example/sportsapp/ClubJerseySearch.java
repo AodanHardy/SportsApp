@@ -1,6 +1,7 @@
 package com.example.sportsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,19 +13,16 @@ import com.example.sportsapp.API.SportsApiClient;
 import com.example.sportsapp.Mappers.ClubMapper;
 import com.example.sportsapp.Models.ClubJersey;
 
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 
 public class ClubJerseySearch extends AppCompatActivity {
     Button clubJerseySearchBtn;
     EditText clubSearchTxt;
     SportsApiClient client;
+
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +31,7 @@ public class ClubJerseySearch extends AppCompatActivity {
 
         clubJerseySearchBtn = findViewById(R.id.btnJerseyClubSearch);
 
+        recyclerView = findViewById(R.id.clubJerseyRecyclerView);
         clubSearchTxt = findViewById(R.id.editTextJerseySearch);
         client = new SportsApiClient();
 
@@ -56,39 +55,26 @@ public class ClubJerseySearch extends AppCompatActivity {
                                     public void onSuccess(String result) {
                                         clubs.get(finalI).setJerseyUrls(ClubMapper.mapJsonToJerseyList(result));
 
-                                        // check if this is the last club, if so, then send to UI
                                         if (finalI == clubs.size() - 1) {
-
+                                        // send data to fragment here
+                                            System.out.println();
+                                            runOnUiThread(() -> {
+                                                System.out.println(clubs);
+                                            });
                                         }
                                     }
-
                                     @Override
                                     public void onError(Exception e) {
-
                                     }
                                 });
                         }
-
-
                     }
-
                     @Override
                     public void onError(Exception e) {
 
                     }
                 });
-
-
-
-                // map valid clubs to list of ClubJerseys
-
-                // call equipment API to get Jersey URLs
-
-
             }
         });
-
     }
-
-
 }
