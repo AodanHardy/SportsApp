@@ -15,7 +15,6 @@ import com.example.sportsapp.Database.Club;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class SearchForClubs extends AppCompatActivity {
@@ -37,7 +36,7 @@ public class SearchForClubs extends AppCompatActivity {
                 .build();
 
         RecyclerView recyclerView = findViewById(R.id.clubSearchResultsRecyclerView);
-        MyClubRecyclerViewAdapter adapter = new MyClubRecyclerViewAdapter(new ArrayList<>());
+        ClubRecyclerViewAdapter adapter = new ClubRecyclerViewAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

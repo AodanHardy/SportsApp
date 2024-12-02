@@ -13,7 +13,7 @@ import java.util.List;
 public class ClubFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private MyClubRecyclerViewAdapter adapter;
+    private ClubRecyclerViewAdapter adapter;
     private List<Club> clubList;
 
     // Constructor to create a new instance of the fragment with club data
@@ -39,7 +39,7 @@ public class ClubFragment extends Fragment {
         }
 
         if (clubList != null) {
-            adapter = new MyClubRecyclerViewAdapter(clubList);
+            adapter = new ClubRecyclerViewAdapter(clubList);
             recyclerView.setAdapter(adapter);
         }
 
