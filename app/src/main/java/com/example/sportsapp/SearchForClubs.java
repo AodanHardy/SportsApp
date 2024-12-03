@@ -18,9 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+/**
+ * The type Search for clubs.
+ */
 public class SearchForClubs extends AppCompatActivity {
+    /**
+     * The Search txt.
+     */
     EditText searchTxt;
-    Button searchBtn, backBtn;
+    /**
+     * The Search btn.
+     */
+    Button searchBtn, /**
+     * The Back btn.
+     */
+    backBtn;
     private AppDatabase db;
 
     @Override

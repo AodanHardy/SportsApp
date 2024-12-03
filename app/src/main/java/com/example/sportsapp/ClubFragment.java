@@ -10,21 +10,29 @@ import android.view.ViewGroup;
 import com.example.sportsapp.Database.Club;
 import java.util.List;
 
+/**
+ * The type Club fragment.
+ */
 public class ClubFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ClubRecyclerViewAdapter adapter;
     private List<Club> clubList;
 
-    // Constructor to create a new instance of the fragment with club data
+    /**
+     * New instance club fragment.
+     *
+     * @param clubs the clubs
+     * @return the club fragment
+     */
+// Constructor to create a new instance of the fragment with club data
     public static ClubFragment newInstance(List<Club> clubs) {
         ClubFragment fragment = new ClubFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("clubList", (java.io.Serializable) clubs);
-        fragment.setArguments(args);
+        Bundle clubBundle = new Bundle();
+        clubBundle.putSerializable("clubList", (java.io.Serializable) clubs);
+        fragment.setArguments(clubBundle);
         return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

@@ -22,10 +22,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+/**
+ * The type Search club by league.
+ */
 public class SearchClubByLeague extends AppCompatActivity {
 
-    Button btnRetrieveClubs, btnSaveClubsToDB, backBtn;
+    /**
+     * The Btn retrieve clubs.
+     */
+    Button btnRetrieveClubs, /**
+     * The Btn save clubs to db.
+     */
+    btnSaveClubsToDB, /**
+     * The Back btn.
+     */
+    backBtn;
+    /**
+     * The Club search.
+     */
     EditText clubSearch;
+    /**
+     * The Clubs.
+     */
     List<Club> clubs;
     private AppDatabase db;
 
@@ -115,7 +133,6 @@ public class SearchClubByLeague extends AppCompatActivity {
             }
         });
     }
-
     private void clearScreen() {
         // Clear the clubs list
         clubs.clear();

@@ -18,17 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClubJerseySearch extends AppCompatActivity {
-    Button clubJerseySearchBtn, backBtn;
-    EditText clubSearchTxt;
-    SportsApiClient client;
-    RecyclerView recyclerView;
-    ClubJerseyRecyclerViewAdapter adapter;
+    private Button clubJerseySearchBtn, backBtn;
+    private EditText clubSearchTxt;
+    private SportsApiClient client;
+    private RecyclerView recyclerView;
+    private ClubJerseyRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_jersey_search);
 
+        // set up
         clubJerseySearchBtn = findViewById(R.id.btnJerseyClubSearch);
         backBtn = findViewById(R.id.jerseySearchBackBtn);
         recyclerView = findViewById(R.id.clubJerseyRecyclerView);
@@ -59,7 +60,9 @@ public class ClubJerseySearch extends AppCompatActivity {
                 client.getAllTeamsByLeague("English Premier League", new SportsApiClient.ApiCallback() {
                     @Override
                     public void onSuccess(String result) {
+                        // get list oj ClubJersey objects from JSON
                         List<ClubJersey> clubs = ClubMapper.mapJsonToClubJersey(result, searchText);
+
 
                         for (int i = 0; i < clubs.size(); i++) {
                             int finalI = i;
@@ -68,6 +71,7 @@ public class ClubJerseySearch extends AppCompatActivity {
                                 public void onSuccess(String result) {
                                     clubs.get(finalI).setJerseyUrls(ClubMapper.mapJsonToJerseyList(result));
 
+                                    // if item is last on list, update table
                                     if (finalI == clubs.size() - 1) {
                                         runOnUiThread(() -> {
                                             adapter.updateData(clubs);

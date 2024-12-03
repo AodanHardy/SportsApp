@@ -10,12 +10,20 @@ import com.bumptech.glide.Glide;
 import com.example.sportsapp.Database.Club;
 import java.util.List;
 
+/**
+ * The type Club recycler view adapter.
+ */
 public class ClubRecyclerViewAdapter extends RecyclerView.Adapter<ClubRecyclerViewAdapter.ViewHolder> {
 
-    private List<Club> mValues;
+    private List<Club> clubList;
 
+    /**
+     * Instantiates a new Club recycler view adapter.
+     *
+     * @param items the items
+     */
     public ClubRecyclerViewAdapter(List<Club> items) {
-        mValues = items;
+        clubList = items;
     }
 
     @Override
@@ -26,7 +34,7 @@ public class ClubRecyclerViewAdapter extends RecyclerView.Adapter<ClubRecyclerVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Club club = mValues.get(position);
+        Club club = clubList.get(position);
         holder.item = club;
 
         holder.nameView.setText(club.getName());
@@ -47,22 +55,63 @@ public class ClubRecyclerViewAdapter extends RecyclerView.Adapter<ClubRecyclerVi
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return clubList.size();
     }
 
+    /**
+     * The type View holder.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * The Name view.
+         */
         public final TextView nameView;
+        /**
+         * The Short name view.
+         */
         public final TextView shortNameView;
+        /**
+         * The Alt name view.
+         */
         public final TextView altNameView;
+        /**
+         * The Formed year view.
+         */
         public final TextView formedYearView;
+        /**
+         * The League view.
+         */
         public final TextView leagueView;
+        /**
+         * The Stadium view.
+         */
         public final TextView stadiumView;
+        /**
+         * The Stadium location view.
+         */
         public final TextView stadiumLocationView;
+        /**
+         * The Stadium capacity view.
+         */
         public final TextView stadiumCapacityView;
+        /**
+         * The Website view.
+         */
         public final TextView websiteView;
+        /**
+         * The Logo view.
+         */
         public final ImageView logoView;
+        /**
+         * The Item.
+         */
         public Club item;
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             nameView = view.findViewById(R.id.clubName);
@@ -78,8 +127,13 @@ public class ClubRecyclerViewAdapter extends RecyclerView.Adapter<ClubRecyclerVi
         }
     }
 
+    /**
+     * Update data.
+     *
+     * @param newClubs the new clubs
+     */
     public void updateData(List<Club> newClubs) {
-        mValues = newClubs; // Replace the existing data
-        notifyDataSetChanged(); // Notify the RecyclerView to rebind the views
+        clubList = newClubs;
+        notifyDataSetChanged();
     }
 }

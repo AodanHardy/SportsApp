@@ -1,68 +1,62 @@
 package com.example.sportsapp.API;
 
-
-import com.example.sportsapp.Mappers.ClubMapper;
-import com.example.sportsapp.Models.ClubJersey;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SportsApiClient {
+import static com.example.sportsapp.Utils.Constants.CLUB_ENDPOINT;
+import static com.example.sportsapp.Utils.Constants.EQUIPMENT_ENDPOINT;
+import static com.example.sportsapp.Utils.Constants.LEAGUE_ENDPOINT_START;
+import static com.example.sportsapp.Utils.Constants.SPORTS_API_URL;
 
-    private static final String SPORTS_API_URL = "https://www.thesportsdb.com/api/v1/json/3/";
+/**
+ * The type Sports api client.
+ */
+public class SportsApiClient {
     private final ExecutorService executorService;
 
+    /**
+     * Instantiates a new Sports api client.
+     */
     public SportsApiClient() {
         this.executorService = Executors.newSingleThreadExecutor();
     }
 
-    // Callback interface for async responses
-    public interface ApiCallback<T> {
+    /**
+     * The interface Api callback.
+     */
+// Callback interface for async responses
+    public interface ApiCallback {
+        /**
+         * On success.
+         *
+         * @param result the result
+         */
         void onSuccess(String result);
+
+        /**
+         * On error.
+         *
+         * @param e the e
+         */
         void onError(Exception e);
     }
 
-    // Get all leagues by country
-    public void getAllLeaguesByCountry(String country, ApiCallback callback) {
-        executorService.execute(() -> {
-            try {
-                String endpoint = "search_all_leagues.php";
-                String url = SPORTS_API_URL + endpoint + "?c=" + URLEncoder.encode(country, "UTF-8") + "&s=Soccer";
-                String response = sendGetRequest(url);
-                callback.onSuccess(response);
-            } catch (Exception e) {
-                callback.onError(e);
-            }
-        });
-    }
-
-    // Get details of a club
-    public void getClub(String club, ApiCallback callback) {
-        executorService.execute(() -> {
-            try {
-                String endpoint = "searchteams.php";
-                String url = SPORTS_API_URL + endpoint + "?t=" + URLEncoder.encode(club, "UTF-8");
-                String response = sendGetRequest(url);
-                callback.onSuccess(response);
-            } catch (Exception e) {
-                callback.onError(e);
-            }
-        });
-    }
-
-    // Get all teams by league
+    /**
+     * Take a league name and return all clubs in it.
+     *
+     * @param league   the league
+     * @param callback the callback
+     */
+// Get all teams by league
     public void getAllTeamsByLeague(String league, ApiCallback callback) {
         executorService.execute(() -> {
             try {
-                String endpoint = "search_all_teams.php";
-                String url = SPORTS_API_URL + endpoint + "?l=" + URLEncoder.encode(league, "UTF-8");
+                String url = SPORTS_API_URL + LEAGUE_ENDPOINT_START + "?l=" + URLEncoder.encode(league, "UTF-8");
                 String response = sendGetRequest(url);
                 callback.onSuccess(response);
             } catch (Exception e) {
@@ -71,11 +65,16 @@ public class SportsApiClient {
         });
     }
 
+    /**
+     * Take a club name and return all equipment for it.
+     *
+     * @param clubId   the club id
+     * @param callback the callback
+     */
     public void getJerseysForClub(String clubId, ApiCallback callback) {
         executorService.execute(() -> {
             try {
-                String endpoint = "lookupequipment.php?id=";
-                String url = SPORTS_API_URL + endpoint + clubId;
+                String url = SPORTS_API_URL + EQUIPMENT_ENDPOINT + clubId;
                 String response = sendGetRequest(url);
                 callback.onSuccess(response);
             } catch (Exception e) {
@@ -84,9 +83,7 @@ public class SportsApiClient {
         });
     }
 
-
-
-    // Send the requests
+    // method is used to send HTTP requests 
     private String sendGetRequest(String urlString) throws Exception {
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -107,13 +104,5 @@ public class SportsApiClient {
         } else {
             throw new Exception("Failed to fetch data: HTTP error code " + responseCode);
         }
-    }
-
-
-
-
-    // Shutdown executor service
-    public void shutdown() {
-        executorService.shutdown();
     }
 }

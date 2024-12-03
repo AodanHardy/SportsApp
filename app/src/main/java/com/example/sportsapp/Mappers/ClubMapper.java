@@ -10,8 +10,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ClubMapper is a util class that maps JSON to Java objects.
+ */
 public class ClubMapper {
 
+    /**
+     * Map json to clubs list.
+     *
+     * @param jsonString the json string
+     * @return the list
+     */
     public static List<Club> mapJsonToClubs(String jsonString) {
         List<Club> clubs = new ArrayList<>();
 
@@ -48,7 +57,13 @@ public class ClubMapper {
     }
 
 
-
+    /**
+     * Map json to club jersey list.
+     *
+     * @param jsonString the json string
+     * @param searchTerm the search term
+     * @return the list
+     */
     public static List<ClubJersey> mapJsonToClubJersey(String jsonString, String searchTerm) {
         List<ClubJersey> clubJerseys = new ArrayList<>();
 
@@ -80,6 +95,12 @@ public class ClubMapper {
         return clubJerseys;
     }
 
+    /**
+     * Map json to jersey list list.
+     *
+     * @param jsonString the json string
+     * @return the list
+     */
     public static List<String> mapJsonToJerseyList(String jsonString) {
         List<String> jerseyUrls = new ArrayList<>();
 

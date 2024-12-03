@@ -10,12 +10,20 @@ import com.bumptech.glide.Glide;
 import com.example.sportsapp.Models.ClubJersey;
 import java.util.List;
 
+/**
+ * The type Club jersey recycler view adapter.
+ */
 public class ClubJerseyRecyclerViewAdapter extends RecyclerView.Adapter<ClubJerseyRecyclerViewAdapter.ViewHolder> {
 
-    private List<ClubJersey> mValues;
+    private List<ClubJersey> clubList;
 
+    /**
+     * Instantiates a new Club jersey recycler view adapter.
+     *
+     * @param items the items
+     */
     public ClubJerseyRecyclerViewAdapter(List<ClubJersey> items) {
-        mValues = items;
+        clubList = items;
     }
 
     @Override
@@ -26,36 +34,56 @@ public class ClubJerseyRecyclerViewAdapter extends RecyclerView.Adapter<ClubJers
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        ClubJersey club = mValues.get(position);
-        holder.mClubNameView.setText(club.getName());
+        ClubJersey club = clubList.get(position);
+        holder.clubTextView.setText(club.getName());
 
         // Loop through the jerseys and display them as ImageViews
-        holder.mJerseyContainer.removeAllViews(); // Clear any previous jerseys
+        holder.jerseyContainer.removeAllViews(); // Clear any previous jerseys
         for (String jerseyUrl : club.getJerseyUrls()) {
-            ImageView jerseyImage = new ImageView(holder.mJerseyContainer.getContext());
-            Glide.with(holder.mJerseyContainer.getContext()).load(jerseyUrl).into(jerseyImage);
-            holder.mJerseyContainer.addView(jerseyImage); // Add image view to the container
+            ImageView jerseyImage = new ImageView(holder.jerseyContainer.getContext());
+            Glide.with(holder.jerseyContainer.getContext()).load(jerseyUrl).into(jerseyImage);
+            holder.jerseyContainer.addView(jerseyImage); // Add image view to the container
         }
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return clubList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mClubNameView;
-        public final ViewGroup mJerseyContainer; // This will hold the jersey images
 
+    /**
+     * The type View holder.
+     */
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * The Club text view.
+         */
+        public final TextView clubTextView;
+        /**
+         * The Jersey container.
+         */
+        public final ViewGroup jerseyContainer;
+
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
-            mClubNameView = view.findViewById(R.id.clubName);
-            mJerseyContainer = view.findViewById(R.id.jerseyContainer);
+            clubTextView = view.findViewById(R.id.clubName);
+            jerseyContainer = view.findViewById(R.id.jerseyContainer);
         }
     }
 
+    /**
+     * Update data.
+     *
+     * @param newClubs the new clubs
+     */
     public void updateData(List<ClubJersey> newClubs) {
-        mValues = newClubs;
+        clubList = newClubs;
         notifyDataSetChanged();
     }
 }

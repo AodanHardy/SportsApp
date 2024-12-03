@@ -18,9 +18,24 @@ import androidx.room.Room;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
-    Button addLeagueToDbBtn, searchForClubByLeagueBtn, searchForClubBtn, jerseySearchBtn;
+    /**
+     * The Add league to db btn.
+     */
+    Button addLeagueToDbBtn, /**
+     * The Search for club by league btn.
+     */
+    searchForClubByLeagueBtn, /**
+     * The Search for club btn.
+     */
+    searchForClubBtn, /**
+     * The Jersey search btn.
+     */
+    jerseySearchBtn;
     private AppDatabase db;
 
     @Override
@@ -53,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         searchForClubBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         jerseySearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,14 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-
     private void populateLeagues() {
+        // populate database with leagues
         LeagueDao leagueDao = db.leagueDao();
-
-
         List<League> leagues = Arrays.asList(
                 new League("4330", "Scottish Premier League", "Soccer", "Scottish Premiership, SPFL"),
                 new League("4331", "German Bundesliga", "Soccer", "Bundesliga, Fußball-Bundesliga"),
