@@ -5,4 +5,9 @@
 
     <dimen name="button_text_size">20sp</dimen>
     <dimen name="submit_button_width">150dp</dimen>
+
+
+    <dimen name="back_button_height">48dp</dimen>
+    <dimen name="back_button_width">48dp</dimen>
+    <dimen name="back_button_padding">10dp</dimen>
 </resources>

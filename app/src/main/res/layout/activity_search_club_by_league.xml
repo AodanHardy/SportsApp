@@ -7,6 +7,20 @@
     android:background="@color/background"
     tools:context=".SearchClubByLeague">
 
+    <Button
+        android:id="@+id/searchClubByLeagueBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:drawableLeft="@drawable/arrow"
+        android:drawablePadding="8dp"
+        android:minWidth="@dimen/back_button_width"
+        android:minHeight="@dimen/back_button_height"
+        android:padding="@dimen/back_button_padding"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextLeagueSearch"
         android:layout_width="wrap_content"

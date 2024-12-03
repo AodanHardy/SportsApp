@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClubJerseySearch extends AppCompatActivity {
-    Button clubJerseySearchBtn;
+    Button clubJerseySearchBtn, backBtn;
     EditText clubSearchTxt;
     SportsApiClient client;
     RecyclerView recyclerView;
@@ -29,6 +30,7 @@ public class ClubJerseySearch extends AppCompatActivity {
         setContentView(R.layout.activity_club_jersey_search);
 
         clubJerseySearchBtn = findViewById(R.id.btnJerseyClubSearch);
+        backBtn = findViewById(R.id.jerseySearchBackBtn);
         recyclerView = findViewById(R.id.clubJerseyRecyclerView);
         clubSearchTxt = findViewById(R.id.editTextJerseySearch);
         client = new SportsApiClient();
@@ -37,6 +39,16 @@ public class ClubJerseySearch extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ClubJerseyRecyclerViewAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClubJerseySearch.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         clubJerseySearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

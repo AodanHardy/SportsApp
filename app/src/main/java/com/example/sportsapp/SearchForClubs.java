@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import java.util.concurrent.Executors;
 
 public class SearchForClubs extends AppCompatActivity {
     EditText searchTxt;
-    Button searchBtn;
+    Button searchBtn, backBtn;
     private AppDatabase db;
 
     @Override
@@ -28,6 +29,7 @@ public class SearchForClubs extends AppCompatActivity {
         setContentView(R.layout.activity_search_for_clubs);
 
         searchBtn = findViewById(R.id.btnSearchClub);
+        backBtn = findViewById(R.id.searchForClubBackBtn);
 
         searchTxt = findViewById(R.id.editTextClubSearch);
 
@@ -40,6 +42,14 @@ public class SearchForClubs extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchForClubs.this, MainActivity.class );
+                startActivity(intent);
+            }
+        });
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

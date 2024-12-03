@@ -1,6 +1,8 @@
 package com.example.sportsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +24,7 @@ import java.util.concurrent.Executors;
 
 public class SearchClubByLeague extends AppCompatActivity {
 
-    Button btnRetrieveClubs, btnSaveClubsToDB;
+    Button btnRetrieveClubs, btnSaveClubsToDB, backBtn;
     EditText clubSearch;
     List<Club> clubs;
     private AppDatabase db;
@@ -42,9 +44,21 @@ public class SearchClubByLeague extends AppCompatActivity {
         btnSaveClubsToDB = findViewById(R.id.btnSaveClubsToDB);
         clubSearch = findViewById(R.id.editTextLeagueSearch);
 
+        backBtn = findViewById(R.id.searchClubByLeagueBackBtn);
+
 
 
         SportsApiClient client = new SportsApiClient();
+
+
+        // back button
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchClubByLeague.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnRetrieveClubs.setOnClickListener(new View.OnClickListener() {
             @Override
