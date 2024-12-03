@@ -1,11 +1,13 @@
 package com.example.sportsapp;
 
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.sportsapp.Database.AppDatabase;
 import com.example.sportsapp.Database.League;
@@ -88,5 +90,12 @@ public class MainActivity extends AppCompatActivity {
         );
 
         leagueDao.insertLeagues(leagues);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, leagues.size() + " Leagues added to the database.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
