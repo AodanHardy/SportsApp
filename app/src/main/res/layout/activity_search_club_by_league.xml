@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".SearchClubByLeague">
 
     <EditText
@@ -11,33 +12,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
-        android:layout_marginBottom="155dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Club"
+        android:hint="League Name"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainer"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/secondary_text"
+        app:layout_constraintBottom_toTopOf="@+id/btnRetrieveClubs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnRetrieveClubs"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="14dp"
         android:text="Retrieve Clubs"
-        app:layout_constraintStart_toStartOf="@+id/btnSaveClubsToDB"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveClubsToDB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextLeagueSearch" />
 
     <Button
         android:id="@+id/btnSaveClubsToDB"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="25dp"
         android:text="Save Clubs to DB"
-        app:layout_constraintEnd_toEndOf="@+id/editTextLeagueSearch"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRetrieveClubs" />
 
     <FrameLayout
@@ -47,6 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLeagueSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveClubsToDB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

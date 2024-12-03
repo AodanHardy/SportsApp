@@ -4,44 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnAddLeaguesToDb"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="148dp"
         android:text="Add Leagues to DB"
-        app:layout_constraintBottom_toTopOf="@+id/btnSearchForClubsByLeague"
-        app:layout_constraintStart_toStartOf="@+id/btnSearchForClubsByLeague" />
-
-    <Button
-        android:id="@+id/btnSearchForClubsByLeague"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:text="Search for Clubs By League"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnSearchForClubs"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSearchForClubsByLeague"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="51dp"
+        android:text="Search for Clubs By League"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddLeaguesToDb" />
+
+    <Button
+        android:id="@+id/btnSearchForClubs"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
         android:text="Search for Clubs"
-        app:layout_constraintStart_toStartOf="@+id/btnSearchForClubsByLeague"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSearchForClubsByLeague" />
 
     <Button
         android:id="@+id/btnSearchClubJerseys"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="53dp"
         android:text="Search for Club Jerseys"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSearchForClubs" />

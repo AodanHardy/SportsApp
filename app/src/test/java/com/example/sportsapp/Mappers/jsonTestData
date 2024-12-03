@@ -1,0 +1,25 @@
+       "testMapJsonToClubsData": [
+    {
+        "idTeam": "133604",
+            "idAPIfootball": "42",
+            "strTeam": "Arsenal",
+            "strTeamAlternate": "Arsenal Football Club, AFC, Arsenal FC",
+            "strTeamShort": "ARS",
+            "intFormedYear": "1892",
+            "strLeague": "English Premier League",
+            "idVenue": "15528",
+            "strStadium": "Emirates Stadium",
+            "strKeywords": "Gunners, Gooners",
+            "strRSS": "https://www.allarsenal.com/feed/",
+            "strLocation": "Holloway, London, England",
+            "intStadiumCapacity": "60338",
+            "strWebsite": "www.arsenal.com",
+            "strColour1": "#EF0107",
+            "strColour2": "#fbffff",
+            "strColour3": "#013373",
+            "strGender": "Male",
+            "strCountry": "England",
+            "strLogo": "https://www.thesportsdb.com/images/media/team/logo/q2mxlz1512644512.png",
+            "strLocked": "unlocked"
+    },
+    ]

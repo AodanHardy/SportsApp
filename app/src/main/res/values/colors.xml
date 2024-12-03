@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="background">#121212</color>
+    <color name="secondary_background">#272727</color>
+
+    <!-- Text -->
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#949494</color>
+
+    <!-- buttons -->
+    <color name="button">#BB86FC</color>
+    <color name="button_text">#3700B3</color>
+
+    <!-- other -->
+    <color name="spinner_background">#B2B2B2</color>
 </resources>

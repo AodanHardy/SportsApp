@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ClubJerseySearch">
 
     <EditText
@@ -15,6 +16,8 @@
         android:ems="10"
         android:hint="Club Name"
         android:inputType="text"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/secondary_text"
         app:layout_constraintBottom_toTopOf="@+id/clubJerseyRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +25,9 @@
 
     <Button
         android:id="@+id/btnJerseyClubSearch"
-        android:layout_width="wrap_content"
+        android:textColor="@color/button_text"
+        app:backgroundTint="@color/button"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="Search"
