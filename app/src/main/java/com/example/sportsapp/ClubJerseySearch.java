@@ -1,23 +1,25 @@
 package com.example.sportsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.sportsapp.API.SportsApiClient;
-import com.example.sportsapp.Models.ClubJersey;
+import com.example.sportsapp.Logging.Logger;
 import com.example.sportsapp.Mappers.ClubMapper;
+import com.example.sportsapp.Models.ClubJersey;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClubJerseySearch extends AppCompatActivity {
+    Logger logger;
     private Button clubJerseySearchBtn, backBtn;
     private EditText clubSearchTxt;
     private SportsApiClient client;
@@ -28,6 +30,8 @@ public class ClubJerseySearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_jersey_search);
+
+        logger = new Logger(ClubJerseySearch.class);
 
         // set up
         clubJerseySearchBtn = findViewById(R.id.btnJerseyClubSearch);
@@ -47,7 +51,6 @@ public class ClubJerseySearch extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ClubJerseySearch.this, MainActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -63,7 +66,6 @@ public class ClubJerseySearch extends AppCompatActivity {
                         // get list oj ClubJersey objects from JSON
                         List<ClubJersey> clubs = ClubMapper.mapJsonToClubJersey(result, searchText);
 
-
                         for (int i = 0; i < clubs.size(); i++) {
                             int finalI = i;
                             client.getJerseysForClub(clubs.get(finalI).getId(), new SportsApiClient.ApiCallback() {
@@ -73,21 +75,22 @@ public class ClubJerseySearch extends AppCompatActivity {
 
                                     // if item is last on list, update table
                                     if (finalI == clubs.size() - 1) {
+                                        logger.info("JERSEYS RECEIVED - SENDING TO UI");
                                         runOnUiThread(() -> {
                                             adapter.updateData(clubs);
                                         });
                                     }
                                 }
-
                                 @Override
                                 public void onError(Exception e) {
+                                    logger.error("GET CLUB EQUIPMENT CALL FAILED: " + e.getMessage());
                                 }
                             });
                         }
                     }
-
                     @Override
                     public void onError(Exception e) {
+                        logger.error("GET ALL TEAMS BY LEAGUE CALL FAILED: " + e.getMessage());
                     }
                 });
             }

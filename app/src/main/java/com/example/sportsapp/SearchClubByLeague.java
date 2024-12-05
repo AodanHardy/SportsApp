@@ -1,7 +1,5 @@
 package com.example.sportsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +7,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Room;
 
 import com.example.sportsapp.API.SportsApiClient;
 import com.example.sportsapp.Database.AppDatabase;
-import com.example.sportsapp.Database.ClubDao;
-import com.example.sportsapp.Mappers.ClubMapper;
 import com.example.sportsapp.Database.Club;
+import com.example.sportsapp.Database.ClubDao;
+import com.example.sportsapp.Logging.Logger;
+import com.example.sportsapp.Mappers.ClubMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ import java.util.concurrent.Executors;
  */
 public class SearchClubByLeague extends AppCompatActivity {
 
+    Logger logger = new Logger(SearchClubByLeague.class);
     /**
      * The Btn retrieve clubs.
      */
@@ -52,6 +53,7 @@ public class SearchClubByLeague extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_club_by_league);
 
+        // set up
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "leagues_db")
                 .fallbackToDestructiveMigration()
                 .build();
@@ -63,8 +65,6 @@ public class SearchClubByLeague extends AppCompatActivity {
         clubSearch = findViewById(R.id.editTextLeagueSearch);
 
         backBtn = findViewById(R.id.searchClubByLeagueBackBtn);
-
-
 
         SportsApiClient client = new SportsApiClient();
 
@@ -96,12 +96,13 @@ public class SearchClubByLeague extends AppCompatActivity {
                             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.fragmentContainer, fragment);
                             transaction.commit();
+                            logger.info("CLUBS ADDED TO FRAGMENT LIST. NO OF CLUBS: " + clubs.size());
                         }
                     }
 
                     @Override
                     public void onError(Exception e) {
-                        System.err.println("Failed to fetch data: " + e.getMessage());
+                        logger.error("Failed to fetch data: " + e.getMessage());
                     }
                 });
             }
@@ -118,7 +119,10 @@ public class SearchClubByLeague extends AppCompatActivity {
                     Executors.newSingleThreadExecutor().execute(new Runnable() {
                         @Override
                         public void run() {
+                            try {
+
                             clubDao.insertClubs(clubs);
+                            logger.info("CLUBS ADDED TO DATABASE");
 
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -127,6 +131,9 @@ public class SearchClubByLeague extends AppCompatActivity {
                                     clearScreen(); // Clear the screen
                                 }
                             });
+                        }catch (Exception e){
+                                logger.error("ERROR ADDING CLUBS TO DATABASE: " + e.getMessage());
+                            }
                         }
                     });
                 }
