@@ -34,10 +34,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+
 
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
@@ -47,5 +49,20 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
+
+
+    testImplementation("androidx.room:room-testing:2.x.x")
+    testImplementation ("junit:junit:4.13.2")
+
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("androidx.test:core:1.4.0")
+    testImplementation("androidx.test.ext:junit:1.1.3") 
+
+
+
+
 }
 
