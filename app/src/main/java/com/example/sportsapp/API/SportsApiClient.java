@@ -1,5 +1,9 @@
 package com.example.sportsapp.API;
 
+import static com.example.sportsapp.Utils.Constants.ALL_TEAMS_IN_LEAGUE_ENDPOINT;
+import static com.example.sportsapp.Utils.Constants.EQUIPMENT_ENDPOINT;
+import static com.example.sportsapp.Utils.Constants.SPORTS_API_URL;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -7,11 +11,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import static com.example.sportsapp.Utils.Constants.CLUB_ENDPOINT;
-import static com.example.sportsapp.Utils.Constants.EQUIPMENT_ENDPOINT;
-import static com.example.sportsapp.Utils.Constants.LEAGUE_ENDPOINT_START;
-import static com.example.sportsapp.Utils.Constants.SPORTS_API_URL;
 
 /**
  * The type Sports api client.
@@ -56,7 +55,7 @@ public class SportsApiClient {
     public void getAllTeamsByLeague(String league, ApiCallback callback) {
         executorService.execute(() -> {
             try {
-                String url = SPORTS_API_URL + LEAGUE_ENDPOINT_START + "?l=" + URLEncoder.encode(league, "UTF-8");
+                String url = SPORTS_API_URL + ALL_TEAMS_IN_LEAGUE_ENDPOINT + URLEncoder.encode(league, "UTF-8");
                 String response = sendGetRequest(url);
                 callback.onSuccess(response);
             } catch (Exception e) {
